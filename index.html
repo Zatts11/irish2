@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Ti 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart, .flower {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      animation: float 10s linear infinite;
+    }
+
+    .heart {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+    }
+
+    .flower {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/765/765503.png');
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      padding: 20px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .nutria {
+      width: 180px;
+      margin-bottom: 10px;
+    }
+
+    .heart-button {
+      background-color: #ff6b81;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: transform 0.2s;
+    }
+
+    .heart-button:hover {
+      transform: scale(1.05);
+      background-color: #ff4757;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #d6336c;
+      display: none;
+    }
+
+    @media (max-width: 500px) {
+      .nutria {
+        width: 140px;
+      }
+      .heart-button {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo animado -->
+  <div class="background" id="background"></div>
+
+  <!-- Contenido -->
+  <div class="container">
+    <img src="https://i.pinimg.com/736x/c9/7f/f7/c97ff7b9ccca35f080ad4bfbc6241339.jpg" alt="" class="nutria">
+    <h2>Para ti, mi amorcito 🦦💗</h2>
+    <button class="heart-button" onclick="mostrarMensaje()">💌 Presiona el corazón</button>
+    <p class="message" id="mensaje">Gracias por llenar mi vida de amor. Eres todo para mí, Gracias por existir ❤️</p>
+  </div>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").style.display = "block";
+    }
+
+    // Animar corazones y flores
+    const fondo = document.getElementById("background");
+    const total = 30;
+
+    for (let i = 0; i < total; i++) {
+      const elemento = document.createElement("div");
+      const tipo = Math.random() > 0.5 ? "heart" : "flower";
+      elemento.classList.add(tipo);
+      elemento.style.left = Math.random() * 100 + "vw";
+      elemento.style.animationDuration = 5 + Math.random() * 5 + "s";
+      const size = 20 + Math.random() * 20;
+      elemento.style.width = size + "px";
+      elemento.style.height = size + "px";
+      fondo.appendChild(elemento);
+    }
+  </script>
+</body>
+</html>
